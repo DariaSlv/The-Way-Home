@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b1215eb4368767d43bf2caf2c3498802
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - buttonClickSound: {fileID: 8300000, guid: 22cde9b490e1623449cf1b1060d4754d, type: 3}
+  - warningSound: {fileID: 8300000, guid: 469beadafa0396742a849f973f086d76, type: 3}
+  - gameOverSound: {fileID: 8300000, guid: 1aff1898faab1564f9090409365fd8d2, type: 3}
+  - typingSound: {fileID: 8300000, guid: 5083ef263e4527b4c8f8cf70f005748c, type: 3}
+  - levelTransitionSound: {fileID: 8300000, guid: a93a02a40ad382742b57d55260fb9cce, type: 3}
+  - jumpSound: {fileID: 8300000, guid: f794594b09fba5f4999275a5b7122c07, type: 3}
+  - playerHurtSound: {fileID: 8300000, guid: 29f09c2676f3e4942851ba023744336a, type: 3}
+  - playerDeathSound: {fileID: 8300000, guid: 8cfd389aec1124d4b9ef3d2d9ddf2b24, type: 3}
+  - eatingSound: {fileID: 8300000, guid: f9e4ff341dbbc924582343ee245e333f, type: 3}
+  - stunEnemySound: {fileID: 8300000, guid: 07e1606f9363e1046b0a5dc0ec091495, type: 3}
+  - bushSound: {fileID: 8300000, guid: 687dc7052a8088a4b902409dde4651fd, type: 3}
+  - winMusic: {fileID: 8300000, guid: 63a7e8ee9593a0b4180dece3a4f8c0cc, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
