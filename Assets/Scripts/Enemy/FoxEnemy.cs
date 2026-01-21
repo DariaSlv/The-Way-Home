@@ -62,7 +62,6 @@ public class FoxEnemyAI : MonoBehaviour
         if (player != null)
             playerHiding = player.GetComponent<PlayerHiding>();
 
-        // VALIDARE CRITICĂ - verificăm dacă patrol points sunt setate corect
         if (patrolPoints == null || patrolPoints.Length < 2)
         {
             Debug.LogError($"[{gameObject.name}] Nu are suficiente patrol points setate! Trebuie minim 2.");
@@ -70,7 +69,6 @@ public class FoxEnemyAI : MonoBehaviour
             return;
         }
 
-        // Verificăm dacă patrol points sunt NULL
         for (int i = 0; i < patrolPoints.Length; i++)
         {
             if (patrolPoints[i] == null)
@@ -81,7 +79,6 @@ public class FoxEnemyAI : MonoBehaviour
             }
         }
 
-        // Debug info
         Debug.Log($"[{gameObject.name}] Initialized with patrol from X:{patrolPoints[0].position.x} to X:{patrolPoints[1].position.x}");
     }
 
@@ -126,13 +123,9 @@ public class FoxEnemyAI : MonoBehaviour
         float dirToPlayer = player.position.x - transform.position.x;
         bool playerInFront = (dirToPlayer > 0 && facingRight) || (dirToPlayer < 0 && !facingRight);
 
-        // Calculăm boundaries-ul patrol zone
         float minX = Mathf.Min(patrolPoints[0].position.x, patrolPoints[1].position.x);
         float maxX = Mathf.Max(patrolPoints[0].position.x, patrolPoints[1].position.x);
         bool playerInsidePatrol = player.position.x >= minX && player.position.x <= maxX;
-
-        // DEBUGGING - Uncomment pentru a vedea ce se întâmplă
-        // Debug.Log($"[{gameObject.name}] Player X: {player.position.x}, Patrol: {minX} to {maxX}, Inside: {playerInsidePatrol}");
 
         if (playerIsHidden && distanceToPlayer <= chaseRange && !isConfused)
         {
@@ -146,10 +139,8 @@ public class FoxEnemyAI : MonoBehaviour
             return;
         }
 
-        // Verificăm dacă playerul este în patrol zone ȘI în range
         if (!playerIsHidden && playerInsidePatrol && distanceToPlayer <= chaseRange)
         {
-            // Player este în zona de patrol ȘI în range
             if (!isChasing)
             {
                 isChasing = true;
@@ -171,7 +162,6 @@ public class FoxEnemyAI : MonoBehaviour
         }
         else
         {
-            // Player NU este în zona de patrol SAU este prea departe
             if (isChasing)
             {
                 isChasing = false;
@@ -338,7 +328,6 @@ public class FoxEnemyAI : MonoBehaviour
         isInAttackRecovery = false;
     }
 
-    // Vizualizare în Scene View pentru debugging
     void OnDrawGizmos()
     {
         if (patrolPoints != null && patrolPoints.Length >= 2)
@@ -349,13 +338,11 @@ public class FoxEnemyAI : MonoBehaviour
                 float maxX = Mathf.Max(patrolPoints[0].position.x, patrolPoints[1].position.x);
                 float y = transform.position.y;
 
-                // Desenăm zona de patrol
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(new Vector3(minX, y - 1, 0), new Vector3(minX, y + 1, 0));
                 Gizmos.DrawLine(new Vector3(maxX, y - 1, 0), new Vector3(maxX, y + 1, 0));
                 Gizmos.DrawLine(new Vector3(minX, y, 0), new Vector3(maxX, y, 0));
 
-                // Desenăm chase range
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(transform.position, chaseRange);
             }
